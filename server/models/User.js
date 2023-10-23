@@ -30,13 +30,6 @@ const userSchema = new Schema({
     enum: ["client", "trainer"],
     required: true,
   },
-  availability: [
-    {
-      date: Date,
-      startTime: Date,
-      endTime: Date,
-    },
-  ],
   appointments: [appointmentSchema],
 });
 

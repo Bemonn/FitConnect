@@ -15,14 +15,6 @@ const appointmentSchema = new Schema({
     type: String,
     required: true,
   },
-  // trainer: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Trainer',
-  // },
-  // user: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'User',
-  // },
 });
 
 module.exports = appointmentSchema;
