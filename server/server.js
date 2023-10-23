@@ -4,8 +4,9 @@ const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 
 // Importing the modularized schema and resolvers
-const { typeDefs } = require('./graphql/typeDefs');
-const { resolvers } = require('./graphql/resolvers');
+const { typeDefs } = require('./schemas/typeDefs');
+const { resolvers } = require('./schemas/resolvers');
+const db = require('./config/connection');
 
 // Create an instance of ApolloServer
 const server = new ApolloServer({ 
