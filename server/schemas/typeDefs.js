@@ -1,4 +1,6 @@
 const { gql } = require("apollo-server-express");
+//requestPasswordReset(email: String!): Boolean
+//resetPassword(token: String!, newPassword: String!): Boolean
 
 exports.typeDefs = gql`
   type User {
@@ -18,7 +20,7 @@ exports.typeDefs = gql`
   }
 
   type Auth {
-    token: ID
+    token: ID!
     user: User
   }
 
@@ -34,7 +36,15 @@ exports.typeDefs = gql`
       role: String!
       password: String!
     ): Auth
+
     login(email: String!, password: String!): Auth
+
+    updateUser(
+      firstName: String
+      lastName: String
+      email: String
+    ): User
+
     addAppointment(
       appointmentDate: String!
       startTime: String!
