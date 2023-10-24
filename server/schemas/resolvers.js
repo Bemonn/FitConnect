@@ -1,5 +1,6 @@
 const { User } = require("../models");
-const { signToken, AuthenticationError } = require("../utils/auth");
+const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-errors');
 
 exports.resolvers = {
   Query: {
@@ -7,7 +8,7 @@ exports.resolvers = {
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
       }
-      throw AuthenticationError;
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
   Mutation: {
@@ -20,13 +21,13 @@ exports.resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -37,13 +38,22 @@ exports.resolvers = {
       if (context.user) {
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          {
-            $push: { appointments: args },
-          },
-          { runValidators: true, new: true }
+          { $push: { appointments: args } },
+          { new: true, runValidators: true }
         );
       }
-      throw AuthenticationError;
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    // New mutation resolver for updating a user
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { ...args },
+          { new: true, runValidators: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

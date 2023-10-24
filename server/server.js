@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const { authMiddleware } = require('./utils/auth');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
 
@@ -12,6 +13,7 @@ const db = require('./config/connection');
 const server = new ApolloServer({ 
     typeDefs, 
     resolvers,
+    context: ({ req }) => authMiddleware({ req }),
 });
 
 // Function to start the server
