@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 const appointmentSchema = require("./Appointment");
@@ -25,9 +24,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  // Updated role field to include 'admin'
   role: {
     type: String,
-    enum: ["client", "trainer"],
+    enum: ["client", "trainer", "admin"],
     required: true,
   },
   appointments: [appointmentSchema],
