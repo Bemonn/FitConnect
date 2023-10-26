@@ -15,3 +15,20 @@ query {
     }
   }
 }`
+
+export const QUERY_ALL = gql`
+query Users {
+  users {
+    _id
+    firstName
+    lastName
+    email
+    role
+    appointments {
+      _id
+      appointmentDate
+      startTime
+      endTime
+    }
+  }
+}`
