@@ -33,13 +33,13 @@ const startServer = async () => {
 
   // Serve up static assets in production
   if (process.env.NODE_ENV === 'production') {
-    // Point static path to "dist"
-    app.use(express.static(path.join(__dirname, 'client', 'dist')));
+  // Point static path to "dist"
+  app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-    });
-  }
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+  });
+}
 
   // Your MongoDB connection URI comes from an environment variable for security
   const MONGODB_URI = process.env.MONGODB_URI;
