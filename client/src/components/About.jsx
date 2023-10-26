@@ -14,6 +14,7 @@ export default function About() {
             enthusiasts like you with experienced and certified personal
             trainers.
             <br></br>
+            <br></br>
             Our platform is designed to make fitness accessible and tailored to
             your unique needs. Whether youre a beginner looking to kick-start
             your fitness journey, an athlete striving for peak performance, or

@@ -1,10 +1,15 @@
+import trainerImage1 from './assets/trainer-1.png';
+import trainerImage2 from './assets/trainer-2.jpeg';
+import trainerImage3 from './assets/trainer-3.jpeg';
+import trainerImage4 from './assets/trainer-4.jpeg';
+
 export const trainers = [
   {
     title: "Trainer 1",
     subtitle: "Weightlifting & Powerlifting",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
-    image: "/trainer-1.png",
+    image: trainerImage1,
     link: "https://reactbootcamp.com",
   },
   {
@@ -12,7 +17,7 @@ export const trainers = [
     subtitle: "Nutrition & Fat Loss",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
-    image: "/trainer-2.png",
+    image: trainerImage2,
     link: "https://reactbootcamp.com",
   },
   {
@@ -20,7 +25,7 @@ export const trainers = [
     subtitle: "Strength & Conditioning",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
-    image: "/trainer-3.png",
+    image: trainerImage3,
     link: "https://reactbootcamp.com",
   },
   {
@@ -28,7 +33,7 @@ export const trainers = [
     subtitle: "Physio & Rehabilitation",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
-    image: "/trainer-4.png",
+    image: trainerImage4,
     link: "https://reactbootcamp.com",
   },
 ];
