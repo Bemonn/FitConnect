@@ -26,6 +26,7 @@ exports.typeDefs = gql`
 
   type Query {
     me: User
+    users: [User]
   }
 
   type Mutation {
@@ -50,5 +51,9 @@ exports.typeDefs = gql`
       startTime: String!
       endTime: String!
     ): User
+
+    deleteUser(_id: ID!): User
+
+    deleteAppointment(_id: ID!): Appointment
   }
 `;
