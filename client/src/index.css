@@ -18,9 +18,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: grey;
   text-decoration: inherit;
 }
 a:hover {

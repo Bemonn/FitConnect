@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Trainers from "./components/Trainers";
 import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
+import Login from "./components/Login";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Skills />
       <Testimonials />
       <Contact />
+      <Login />
     </main>
   );
 }
