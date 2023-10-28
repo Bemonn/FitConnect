@@ -10,7 +10,7 @@ export const trainers = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
     image: trainerImage1,
-    link: "https://reactbootcamp.com",
+    link: "#",
   },
   {
     title: "Trainer 2",
@@ -18,7 +18,7 @@ export const trainers = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
     image: trainerImage2,
-    link: "https://reactbootcamp.com",
+    link: "#",
   },
   {
     title: "Trainer 3",
@@ -26,7 +26,7 @@ export const trainers = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
     image: trainerImage3,
-    link: "https://reactbootcamp.com",
+    link: "#",
   },
   {
     title: "Trainer 4",
@@ -34,24 +34,24 @@ export const trainers = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
     image: trainerImage4,
-    link: "https://reactbootcamp.com",
+    link: "#",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quod necessitatibus quidem impedit facilis? Distinctio laboriosam veritatis recusandae minus. Voluptatum accusantium hic laudantium soluta ea sapiente cupiditate officia maiores itaque.",
+      "The personalized approach is what truly sets FitConnect apart. My trainer took the time to understand my goals, my limitations, and my preferences. They crafted a workout plan that challenged me without overwhelming me. Each session felt tailored just for me, addressing my specific needs and helping me overcome my fitness hurdles.",
     image: "https://randomuser.me/api/portraits/men/1.jpg",
-    name: "Jesse Hicks",
-    company: "Zoozle",
+    name: "Gym Goer",
+    company: "Weightlifter",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quod necessitatibus quidem impedit facilis? Distinctio laboriosam veritatis recusandae minus. Voluptatum accusantium hic laudantium soluta ea sapiente cupiditate officia maiores itaque.",
+      "I can't express enough how FitConnect has transformed my fitness journey. Before discovering this incredible personal trainer app, I was stuck in a rut, unsure of where to start and lacking the motivation to push myself. That all changed when I connected with their dedicated team of trainers.",
     image: "https://randomuser.me/api/portraits/men/94.jpg",
     name: "Ruben Alvarez",
-    company: "Dooble.io",
+    company: "Beginner",
   },
 ];
 
