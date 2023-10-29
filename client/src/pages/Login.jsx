@@ -1,16 +1,19 @@
 import { useState } from "react";
+import { ADD_USER } from "../utils/mutations"
+import { useMutation } from "@apollo/client";
 
 export default function LoginSignupForm() {
-  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [signupData, setSignupData] = useState({
     firstName: "",
     lastName: "",
-    username: "",
+    email: "",
     password: "",
     confirmPassword: "",
     role: "client", //default role
   });
   const [activeForm, setActiveForm] = useState("login");
+  const [addUser] = useMutation(ADD_USER)
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +24,9 @@ export default function LoginSignupForm() {
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Handle signup form submission
-    console.log("Signing up with data:", signupData);
+    const {firstName, lastName, email, password, role} = signupData
+    console.log("Signing up with data:", {firstName, lastName, email, password, role});
+    addUser({variables: {firstName, lastName, email, password, role}})
   };
 
   return (
@@ -64,9 +69,9 @@ export default function LoginSignupForm() {
                   id="email"
                   type="text"
                   placeholder="Email"
-                  value={loginData.username}
+                  value={loginData.email}
                   onChange={(e) =>
-                    setLoginData({ ...loginData, username: e.target.value })
+                    setLoginData({ ...loginData, email: e.target.value })
                   }
                 />
               </div>
@@ -154,9 +159,9 @@ export default function LoginSignupForm() {
                   id="email"
                   type="text"
                   placeholder="Email"
-                  value={signupData.username}
+                  value={signupData.email}
                   onChange={(e) =>
-                    setSignupData({ ...signupData, username: e.target.value })
+                    setSignupData({ ...signupData, email: e.target.value })
                   }
                 />
               </div>

@@ -1,4 +1,4 @@
-const { gql } = require("apollo-client");
+import { gql } from "@apollo/client"
 
 export const ADD_USER = gql`
 mutation AddUser($firstName: String!, $lastName: String!, $email: String!, $role: String!, $password: String!) {

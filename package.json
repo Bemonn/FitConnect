@@ -33,7 +33,7 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server.js",
-    "client": "cd client && npm start"
+    "client": "cd client && npm run dev"
   },
   "repository": {
     "type": "git",
