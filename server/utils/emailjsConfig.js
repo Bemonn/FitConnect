@@ -4,11 +4,11 @@
 const emailjs = require('emailjs-com');
 
 //Welcome email function
-function sendWelcomeEmail(userData) {
+function sendWelcomeEmail() {
   //sent to their email
   const templateParams = {
     from_name: 'Fitconnect',  
-    to_name: userData.email,  
+    to_name: "fitconnect64@gmail.com",
   };
 
   // Use the email service library to send the email
