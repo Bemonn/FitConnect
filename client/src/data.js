@@ -11,7 +11,7 @@ export const trainers = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
     image: trainerImage1,
-    link: "#",
+    link: "/booking",
   },
   {
     id: 2,
@@ -47,14 +47,14 @@ export const testimonials = [
     quote:
       "The personalized approach is what truly sets FitConnect apart. My trainer took the time to understand my goals, my limitations, and my preferences. They crafted a workout plan that challenged me without overwhelming me. Each session felt tailored just for me, addressing my specific needs and helping me overcome my fitness hurdles.",
     image: "https://randomuser.me/api/portraits/men/1.jpg",
-    name: "Gym Goer",
+    name: "Gym A. Lot",
     company: "Weightlifter",
   },
   {
     quote:
       "I can't express enough how FitConnect has transformed my fitness journey. Before discovering this incredible personal trainer app, I was stuck in a rut, unsure of where to start and lacking the motivation to push myself. That all changed when I connected with their dedicated team of trainers.",
     image: "https://randomuser.me/api/portraits/men/94.jpg",
-    name: "Ruben Alvarez",
+    name: "Joe Smith",
     company: "Beginner",
   },
 ];
@@ -62,8 +62,8 @@ export const testimonials = [
 export const skills = [
   "Tailored Fitness Experience",
   "Certified Professionals",
-  "Building Lasting Connections:",
+  "Building Lasting Connections",
   "Flexible Scheduling",
   "Convenience at Your Fingertips",
-  "Diverse Fitness Options:",
+  "Diverse Fitness Options",
 ];

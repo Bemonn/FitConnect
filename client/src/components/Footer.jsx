@@ -11,7 +11,7 @@ const Footer = () => {
           FitConnect
         </Link>
         <div className="md:ml-auto flex items-center space-x-4">
-          <p className="text-gray-400">Phone: +123 456 789</p>
+          <p className="text-gray-400">Phone: 123 456 7890</p>
           <p className="text-gray-400">Email: info@fitconnect.com</p>
           <p className="text-gray-400">Address: 123 Fitness Street, Gymtown</p>
           <div className="flex space-x-4">

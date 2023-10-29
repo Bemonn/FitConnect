@@ -2,11 +2,11 @@ import { skills } from "../data";
 
 export default function Skills() {
   return (
-    <section id="skills">
-      <div className="container px-5 py-10 mx-auto">
-        <div className="text-center mb-20">
+    <section id="skills" className="bg-gray-900 text-white py-20">
+      <div className="container mx-auto px-5">
+        <div className="text-center mb-10">
           <h1 className="sm:text-4xl text-3xl font-medium title-font text-white mb-4">
-            Why Choose FitConnect
+            Why Choose FitConnect 💪✨
           </h1>
           <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
             We understand that every fitness journey is different. Our trainers
@@ -15,12 +15,10 @@ export default function Skills() {
           </p>
         </div>
         <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-          {skills.map((skill) => (
-            <div key={skill} className="p-2 sm:w-1/2 w-full">
-              <div className="bg-gray-800 rounded flex p-4 h-full items-center">
-                <span className="title-font font-medium text-white">
-                  {skill}
-                </span>
+          {skills.map((skill, index) => (
+            <div key={index} className="p-2 sm:w-1/2 w-full">
+              <div className="bg-purple-700 rounded p-6 h-full text-center">
+                <span className="text-xl font-medium">{skill} 💪</span>
               </div>
             </div>
           ))}
