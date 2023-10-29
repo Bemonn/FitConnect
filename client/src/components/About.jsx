@@ -12,7 +12,7 @@ export default function About() {
             tailored to your unique needs.
             <br />
             <br />
-            Whether you're a beginner looking to kick-start your fitness
+            Whether you are a beginner looking to kick-start your fitness
             journey, an athlete striving for peak performance, or someone in
             between, we have a diverse team of dedicated personal trainers ready
             to guide you.

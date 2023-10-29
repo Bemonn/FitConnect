@@ -5,7 +5,7 @@ export default function Navbar() {
     <header className="bg-gray-800 md:sticky top-0 z-10">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link
-          to="/"
+          to="#about"
           className="title-font text-purple-500 font-extrabold text-4xl text-white mb-4 md:mb-0 ml-3"
         >
           FitConnect
@@ -20,11 +20,11 @@ export default function Navbar() {
           <a href="#testimonials" className="mr-5 hover:text-white">
             Testimonials
           </a>
-          <a href="/booking" className="mr-5 hover:text-white">
-            Book Now
-          </a>
           <a href="#contact" className="mr-5 hover:text-white">
             Contact Us
+          </a>
+          <a href="/booking" className="mr-5 hover:text-white">
+            Book Now
           </a>
         </nav>
         <Link

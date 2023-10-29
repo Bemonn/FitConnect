@@ -24,7 +24,7 @@ export default function Contact() {
       .catch((error) => alert(error));
   }
   return (
-    <section id="contact" className="relative">
+    <section id="contact" className="bg-gray-900 text-white py-20">
       <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           <iframe
@@ -32,9 +32,9 @@ export default function Contact() {
             height="100%"
             title="map"
             className="absolute inset-0"
-            frameBorder={0}
-            marginHeight={0}
-            marginWidth={0}
+            // frameBorder={0}
+            // marginHeight={0}
+            // marginWidth={0}
             style={{ filter: "opacity(0.7)" }}
             src="https://www.google.com/maps/embed/v1/place?q=Sydney+Harbour+Bridge,+Sydney+Harbour+Bridge,+Sydney+NSW,+Australia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
           />
@@ -44,8 +44,8 @@ export default function Contact() {
                 ADDRESS
               </h2>
               <p className="mt-1">
-                ## Something Street. <br />
-                Sydney, Australia
+                123 Fitness Street. <br />
+                Gymtown, Australia
               </p>
             </div>
             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
@@ -53,7 +53,7 @@ export default function Contact() {
                 EMAIL
               </h2>
               <a className="text-indigo-400 leading-relaxed">
-                FitConnect@email.com
+                info@fitconnect.com
               </a>
               <h2 className="title-font font-semibold text-white tracking-widest text-xs mt-4">
                 PHONE
