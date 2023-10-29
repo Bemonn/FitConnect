@@ -2,7 +2,7 @@ import { trainers } from "../data";
 
 export default function Trainers() {
   return (
-    <section id="about" className="bg-gray-900 text-white py-20 flex flex-col justify-center items-center">
+    <section id="trainers" className="bg-gray-900 text-white py-20 flex flex-col justify-center items-center">
       <div className="container mx-auto px-6">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-wide text-center">
           Meet Our Trainers
