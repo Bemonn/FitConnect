@@ -5,6 +5,7 @@ import trainerImage4 from './assets/trainer-4.jpeg';
 
 export const trainers = [
   {
+    id: 1,
     title: "Trainer 1",
     subtitle: "Weightlifting & Powerlifting",
     description:
@@ -13,6 +14,7 @@ export const trainers = [
     link: "#",
   },
   {
+    id: 2,
     title: "Trainer 2",
     subtitle: "Nutrition & Fat Loss",
     description:
@@ -21,6 +23,7 @@ export const trainers = [
     link: "#",
   },
   {
+    id: 3,
     title: "Trainer 3",
     subtitle: "Strength & Conditioning",
     description:
@@ -29,6 +32,7 @@ export const trainers = [
     link: "#",
   },
   {
+    id: 4,
     title: "Trainer 4",
     subtitle: "Physio & Rehabilitation",
     description:

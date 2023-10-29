@@ -1,0 +1,95 @@
+import { useState } from "react";
+import Calendar from "react-calendar";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "react-calendar/dist/Calendar.css";
+
+const trainers = [
+  { id: 1, name: "Trainer 1" },
+  { id: 2, name: "Trainer 2" },
+  { id: 3, name: "Trainer 3" },
+  { id: 4, name: "Trainer 4" },
+];
+
+const BookingPage = () => {
+  const [selectedTrainer, setSelectedTrainer] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState(null);
+
+  const handleTrainerSelect = (trainerId) => {
+    setSelectedTrainer(trainerId);
+  };
+
+  const handleDateSelect = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleTimeSelect = (time) => {
+    setSelectedTime(time);
+  };
+
+  const handleConfirmBooking = () => {
+    // Handle the booking confirmation logic
+    console.log(
+      "Booking confirmed:",
+      selectedTrainer,
+      selectedDate,
+      selectedTime
+    );
+  };
+
+  return (
+    <div className="container mx-auto p-8">
+      <h1 className="text-3xl font-bold mb-4">Book a Personal Trainer</h1>
+
+      <div className="flex mb-4">
+        <h2 className="mr-4">Select Trainer:</h2>
+        <div className="flex space-x-4">
+          {trainers.map((trainer) => (
+            <button
+              key={trainer.id}
+              className={`border px-4 py-2 rounded ${
+                selectedTrainer === trainer.id
+                  ? "bg-blue-500 text-white"
+                  : "hover:bg-gray-200"
+              }`}
+              onClick={() => handleTrainerSelect(trainer.id)}
+            >
+              {trainer.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <h2 className="mb-2">Select Date:</h2>
+        <Calendar onChange={handleDateSelect} value={selectedDate} />
+      </div>
+
+      <div className="mb-4">
+        <h2 className="mb-2">Select Time:</h2>
+        <div className="relative">
+          <DatePicker
+            selected={selectedTime}
+            onChange={(time) => handleTimeSelect(time)}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={30}
+            dateFormat="h:mm aa"
+            timeCaption="Time"
+            className="border border-gray-300 rounded px-4 py-2 w-64"
+          />
+        </div>
+      </div>
+
+      <button
+        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        onClick={handleConfirmBooking}
+      >
+        Confirm Booking
+      </button>
+    </div>
+  );
+};
+
+export default BookingPage;

@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar";
 import Trainers from "./components/Trainers";
 import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
-import Login from "./components/Login";
+import Login from "./pages/Login";
+import Booking from "./pages/Booking";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Testimonials />
       <Contact />
       <Login />
+      <Booking />
     </main>
   );
 }

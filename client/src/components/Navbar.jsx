@@ -20,6 +20,9 @@ export default function Navbar() {
           <a href="#testimonials" className="mr-5 hover:text-white">
             Testimonials
           </a>
+          <a href="/booking" className="mr-5 hover:text-white">
+            Book Now
+          </a>
           <a href="#contact" className="mr-5 hover:text-white">
             Contact Us
           </a>
