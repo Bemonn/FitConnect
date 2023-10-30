@@ -11,7 +11,7 @@ query {
     appointments {
       selectedDate
       selectedTime
-      trainer
+      selectedTrainer
     }
   }
 }`
@@ -28,7 +28,7 @@ query Users {
       _id
       selectedDate
       selectedTime
-      trainer
+      selectedTrainer
     }
   }
 }`

@@ -23,8 +23,8 @@ mutation Mutation($email: String!, $password: String!) {
 }`
 
 export const ADD_APPOINTMENT = gql`
-mutation AddAppointment($appointmentDate: String!, $startTime: String!, $endTime: String!) {
-  addAppointment(appointmentDate: $appointmentDate, startTime: $startTime, endTime: $endTime) {
+mutation AddAppointment($selectedDate: String!, $selectedTime: String!, $selectedTrainer: String!) {
+  addAppointment(selectedDate: $selectedDate, selectedTime: $selectedTime, selectedTrainer: $selectedTrainer) {
     _id
     firstName
     lastName
@@ -34,7 +34,7 @@ mutation AddAppointment($appointmentDate: String!, $startTime: String!, $endTime
       _id
       selectedDate
       selectedTime
-      trainer
+      selectedTrainer
     }
   }
 }`
@@ -51,7 +51,7 @@ mutation UpdateUser($firstName: String, $lastName: String, $email: String) {
       _id
       selectedDate
       selectedTime
-      trainer
+      selectedTrainer
     }
   }
 }`
@@ -62,7 +62,7 @@ mutation DeleteAppointment($id: ID!) {
     _id
     selectedDate
     selectedTime
-    trainer
+    selectedTrainer
   }
 }`
 
@@ -78,7 +78,7 @@ mutation DeleteUser($id: ID!) {
       _id
       selectedDate
       selectedTime
-      trainer
+      selectedTrainer
     }
   }
 }`

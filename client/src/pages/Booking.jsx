@@ -3,6 +3,8 @@ import Calendar from "react-calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-calendar/dist/Calendar.css";
+import { ADD_APPOINTMENT } from "../utils/mutations"
+import { useMutation } from "@apollo/client";
 
 const trainers = [
   { id: 1, name: "John Lifter" },
@@ -15,6 +17,8 @@ const BookingPage = () => {
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
+
+  const [addAppointment] = useMutation(ADD_APPOINTMENT)
 
   const handleTrainerSelect = (trainerId) => {
     setSelectedTrainer(trainerId);
@@ -29,13 +33,30 @@ const BookingPage = () => {
   };
 
   const handleConfirmBooking = () => {
-    // Handle the booking confirmation logic
+    // Ensure that the user has selected a trainer, date, and time.
     console.log(
       "Booking confirmed:",
       selectedTrainer,
       selectedDate,
       selectedTime
     );
+    if (selectedTrainer && selectedDate && selectedTime) {
+      addAppointment({
+        variables: {
+          selectedTrainer: selectedTrainer.toString(),
+          selectedDate: selectedDate.toISOString(), 
+          selectedTime: selectedTime.toISOString(), 
+        },
+      })
+        .then((response) => {
+          console.log("Booking confirmed:", response.data.addAppointment);
+        })
+        .catch((error) => {
+          console.error("Error confirming booking:", error);
+        });
+    } else {
+      console.error("Please select trainer, date, and time.");
+    }
   };
 
   return (
