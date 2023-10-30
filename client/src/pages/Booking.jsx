@@ -20,47 +20,8 @@ const BookingPage = () => {
 
   const [addAppointment] = useMutation(ADD_APPOINTMENT)
 
-  const handleTrainerSelect = (trainerId) => {
-    setSelectedTrainer(trainerId);
-  };
-
-  const handleDateSelect = (date) => {
-    setSelectedDate(date);
-  };
-
-  const handleTimeSelect = (time) => {
-    setSelectedTime(time);
-  };
-
-  const handleConfirmBooking = () => {
-    // Ensure that the user has selected a trainer, date, and time.
-    console.log(
-      "Booking confirmed:",
-      selectedTrainer,
-      selectedDate,
-      selectedTime
-    );
-    if (selectedTrainer && selectedDate && selectedTime) {
-      addAppointment({
-        variables: {
-          selectedTrainer: selectedTrainer.toString(),
-          selectedDate: selectedDate.toISOString(), 
-          selectedTime: selectedTime.toISOString(), 
-        },
-      })
-        .then((response) => {
-          console.log("Booking confirmed:", response.data.addAppointment);
-        })
-        .catch((error) => {
-          console.error("Error confirming booking:", error);
-        });
-    } else {
-      console.error("Please select trainer, date, and time.");
-    }
-  };
-
   return (
-    <div className="container mx-auto p-8 bg-gray-900 text-white">
+    <div className="container mx-auto bg-gray-900 text-white p-8">
       <h1 className="text-3xl font-bold mb-4">Book a Personal Trainer</h1>
 
       <div className="flex mb-4">
@@ -72,9 +33,9 @@ const BookingPage = () => {
               className={`border px-4 py-2 rounded ${
                 selectedTrainer === trainer.id
                   ? "bg-blue-500 text-white"
-                  : "hover:bg-gray-200"
+                  : "hover:bg-gray-200 hover:text-black"
               }`}
-              onClick={() => handleTrainerSelect(trainer.id)}
+              onClick={() => setSelectedTrainer(trainer.id)}
             >
               {trainer.name}
             </button>
@@ -84,28 +45,50 @@ const BookingPage = () => {
 
       <div className="mb-4">
         <h2 className="mb-2">Select Date:</h2>
-        <Calendar onChange={handleDateSelect} value={selectedDate} />
+        <Calendar
+          onChange={setSelectedDate}
+          value={selectedDate}
+          className="bg-white text-gray-900"
+        />
       </div>
 
       <div className="mb-4">
         <h2 className="mb-2">Select Time:</h2>
-        <div className="relative">
+        <div className="relative bg-white rounded">
           <DatePicker
             selected={selectedTime}
-            onChange={(time) => handleTimeSelect(time)}
+            onChange={setSelectedTime}
             showTimeSelect
             showTimeSelectOnly
             timeIntervals={30}
             dateFormat="h:mm aa"
             timeCaption="Time"
-            className="border border-gray-300 rounded px-4 py-2 w-64"
+            className="border border-gray-300 rounded px-4 py-2 w-64 text-gray-900"
           />
         </div>
       </div>
 
       <button
         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-        onClick={handleConfirmBooking}
+        onClick={() => {
+          if (selectedTrainer && selectedDate && selectedTime) {
+            addAppointment({
+              variables: {
+                selectedTrainer: selectedTrainer.toString(),
+                selectedDate: selectedDate.toISOString(), 
+                selectedTime: selectedTime.toISOString(), 
+              },
+            })
+            .then((response) => {
+              console.log("Booking confirmed:", response.data.addAppointment);
+            })
+            .catch((error) => {
+              console.error("Error confirming booking:", error);
+            });
+          } else {
+            console.error("Please select trainer, date, and time.");
+          }
+        }}
       >
         Confirm Booking
       </button>
