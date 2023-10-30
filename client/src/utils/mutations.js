@@ -32,9 +32,9 @@ mutation AddAppointment($appointmentDate: String!, $startTime: String!, $endTime
     role
     appointments {
       _id
-      appointmentDate
-      startTime
-      endTime
+      selectedDate
+      selectedTime
+      trainer
     }
   }
 }`
@@ -49,9 +49,9 @@ mutation UpdateUser($firstName: String, $lastName: String, $email: String) {
     role
     appointments {
       _id
-      appointmentDate
-      startTime
-      endTime
+      selectedDate
+      selectedTime
+      trainer
     }
   }
 }`
@@ -60,9 +60,9 @@ export const DELETE_APPOINTMENT = gql`
 mutation DeleteAppointment($id: ID!) {
   deleteAppointment(_id: $id) {
     _id
-    appointmentDate
-    startTime
-    endTime
+    selectedDate
+    selectedTime
+    trainer
   }
 }`
 
@@ -76,9 +76,9 @@ mutation DeleteUser($id: ID!) {
     role
     appointments {
       _id
-      appointmentDate
-      startTime
-      endTime
+      selectedDate
+      selectedTime
+      trainer
     }
   }
 }`

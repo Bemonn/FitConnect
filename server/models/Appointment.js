@@ -3,16 +3,17 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const appointmentSchema = new Schema({
-  appointmentDate: {
+  selectedDate: {
     type: String,
     required: true,
   },
-  startTime: {
+  selectedTime: {
     type: String,
     required: true,
   },
-  endTime: {
+  trainer: {
     type: String,
+    enum: ["1", "2", "3", "4" ],
     required: true,
   },
 });
