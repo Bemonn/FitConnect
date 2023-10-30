@@ -52,6 +52,7 @@ import Contact from "./components/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import Footer from "./components/Footer.jsx";
 import Booking from "./pages/Booking.jsx";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/booking",
         element: <Booking />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },

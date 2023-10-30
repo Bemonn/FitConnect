@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  // Simulated authentication check
+  const isAuthenticated = !!localStorage.getItem('id_token');
+
+  const handleDashboardClick = () => {
+    if (!isAuthenticated) {
+      window.location.href = "/login";
+    }
+  };
+
   return (
     <header className="bg-gray-800 md:sticky top-0 z-10">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -26,6 +35,13 @@ export default function Navbar() {
           <a href="/booking" className="mr-5 hover:text-white">
             Book Now
           </a>
+          <Link 
+            to={isAuthenticated ? "/dashboard" : "/login"} 
+            onClick={handleDashboardClick}
+            className="mr-5 hover:text-white"
+          >
+            Dashboard
+          </Link>
         </nav>
         <Link
           to="/login"
