@@ -72,11 +72,24 @@ const BookingPage = () => {
         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         onClick={() => {
           if (selectedTrainer && selectedDate && selectedTime) {
+            const formattedDate = selectedDate.toLocaleDateString(undefined, {
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            }); 
+            const dateObject = new Date(selectedTime);
+            const formattedTime = dateObject.toLocaleTimeString(undefined, {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+              hour12: true,
+            });
             addAppointment({
               variables: {
                 selectedTrainer: selectedTrainer.toString(),
-                selectedDate: selectedDate.toISOString(), 
-                selectedTime: selectedTime.toISOString(), 
+                selectedDate: formattedDate, 
+                selectedTime: formattedTime, 
               },
             })
             .then((response) => {
