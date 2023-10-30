@@ -1,44 +1,44 @@
-import trainerImage1 from './assets/trainer-1.png';
-import trainerImage2 from './assets/trainer-2.jpeg';
-import trainerImage3 from './assets/trainer-3.jpeg';
-import trainerImage4 from './assets/trainer-4.jpeg';
+import trainerImage1 from "./assets/trainer-1.png";
+import trainerImage2 from "./assets/trainer-2.jpeg";
+import trainerImage3 from "./assets/trainer-3.jpeg";
+import trainerImage4 from "./assets/trainer-4.jpeg";
 
 export const trainers = [
   {
     id: 1,
-    title: "Trainer 1",
+    title: "John Lifter",
     subtitle: "Weightlifting & Powerlifting",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+      "John is a certified personal trainer with years of experience in competitive weightlifting. He specialises in helping clients achieve their strength and body composition goals.",
     image: trainerImage1,
     link: "/booking",
   },
   {
     id: 2,
-    title: "Trainer 2",
-    subtitle: "Nutrition & Fat Loss",
+    title: "Emily Cardio",
+    subtitle: "Cardio & Endurance Training",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+      "Emily is passionate about cardio and endurance training. With her energetic and motivating approach, she helps her clients improve their cardiovascular health and stamina.",
     image: trainerImage2,
-    link: "#",
+    link: "/booking",
   },
   {
     id: 3,
-    title: "Trainer 3",
+    title: "Amanda Strength",
     subtitle: "Strength & Conditioning",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+      "Building strength is Amanda's expertise. Whether you're aiming to increase your overall body strength, tone muscles, or improve your athletic performance, Amanda will craft comprehensive strength training programs customized to your goals.",
     image: trainerImage3,
-    link: "#",
+    link: "/booking",
   },
   {
     id: 4,
-    title: "Trainer 4",
+    title: "Ben Physio",
     subtitle: "Physio & Rehabilitation",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+      "Ben is not just a personal trainer but also a certified physiotherapist. Ben specialize in rehabilitative exercises and injury prevention. If you're recovering from an injury or dealing with chronic pain, Ben will create tailored exercise plans to enhance your mobility, flexibility, and overall well-being.",
     image: trainerImage4,
-    link: "#",
+    link: "/booking",
   },
 ];
 

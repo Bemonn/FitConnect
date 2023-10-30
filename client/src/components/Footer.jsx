@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
-        <Link to="/" className="text-3xl font-bold mb-4 flex items-center">
+        <a href="#about" className="text-3xl font-bold mb-4 flex items-center">
           <img src={logo} alt="FitConnect Logo" className="w-8 h-8 mr-2" />
           FitConnect
-        </Link>
+        </a>
         <div className="md:ml-auto flex items-center space-x-4">
           <p className="text-gray-400">Phone: 123 456 7890</p>
           <p className="text-gray-400">Email: info@fitconnect.com</p>
