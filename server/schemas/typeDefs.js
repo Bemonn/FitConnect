@@ -14,9 +14,9 @@ exports.typeDefs = gql`
 
   type Appointment {
     _id: ID
-    appointmentDate: String!
-    startTime: String!
-    endTime: String!
+    selectedDate: String!
+    selectedTime: String!
+    trainer: String!
   }
 
   type Auth {
@@ -47,9 +47,9 @@ exports.typeDefs = gql`
     ): User
 
     addAppointment(
-      appointmentDate: String!
-      startTime: String!
-      endTime: String!
+      selectedDate: String!
+      selectedTime: String!
+      trainer: String!
     ): User
 
     deleteUser(_id: ID!): User

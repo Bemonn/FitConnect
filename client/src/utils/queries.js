@@ -9,9 +9,9 @@ query {
     role
     email
     appointments {
-      appointmentDate
-      startTime
-      endTime
+      selectedDate
+      selectedTime
+      trainer
     }
   }
 }`
@@ -26,9 +26,9 @@ query Users {
     role
     appointments {
       _id
-      appointmentDate
-      startTime
-      endTime
+      selectedDate
+      selectedTime
+      trainer
     }
   }
 }`
