@@ -16,7 +16,7 @@ exports.typeDefs = gql`
     _id: ID
     selectedDate: String!
     selectedTime: String!
-    trainer: String!
+    selectedTrainer: String!
   }
 
   type Auth {
@@ -49,7 +49,7 @@ exports.typeDefs = gql`
     addAppointment(
       selectedDate: String!
       selectedTime: String!
-      trainer: String!
+      selectedTrainer: String!
     ): User
 
     deleteUser(_id: ID!): User

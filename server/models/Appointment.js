@@ -11,7 +11,7 @@ const appointmentSchema = new Schema({
     type: String,
     required: true,
   },
-  trainer: {
+  selectedTrainer: {
     type: String,
     enum: ["1", "2", "3", "4" ],
     required: true,
