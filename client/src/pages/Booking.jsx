@@ -5,10 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-calendar/dist/Calendar.css";
 
 const trainers = [
-  { id: 1, name: "Trainer 1" },
-  { id: 2, name: "Trainer 2" },
-  { id: 3, name: "Trainer 3" },
-  { id: 4, name: "Trainer 4" },
+  { id: 1, name: "John Lifter" },
+  { id: 2, name: "Emily Cardio" },
+  { id: 3, name: "Amanda Strength" },
+  { id: 4, name: "Ben Physio" },
 ];
 
 const BookingPage = () => {
