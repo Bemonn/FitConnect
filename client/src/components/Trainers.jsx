@@ -32,6 +32,11 @@ export default function Trainers() {
                     {trainer.title}
                   </h1>
                   <p className="leading-relaxed">{trainer.description}</p>
+                  <br />
+                  <ul className="list-disc">
+                    <li> {trainer.expertise}</li>
+                    <li> {trainer.certificate}</li>
+                  </ul>
                 </div>
               </div>
             </div>

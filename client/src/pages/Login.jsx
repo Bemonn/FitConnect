@@ -51,7 +51,7 @@ export default function LoginSignupForm() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto bg-gray-900">
       <div className="flex justify-center items-center h-screen">
         <div className="w-full max-w-md">
           <div className="mb-6">

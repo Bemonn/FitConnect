@@ -9,7 +9,9 @@ export const trainers = [
     title: "John Lifter",
     subtitle: "Weightlifting & Powerlifting",
     description:
-      "John is a certified personal trainer with years of experience in competitive weightlifting. He specialises in helping clients achieve their strength and body composition goals.",
+      "John is a certified personal trainer with years of experience in competitive weightlifting. He specialises in helping clients achieve their strength and body composition goals. John's training programs focus on proper lifting techniques, muscle hypertrophy, and personalized nutrition plans to optimize your fitness journey.",
+    expertise: "Certified Sports Coach",
+    certificate: "Cert III in Fitness",
     image: trainerImage1,
     link: "/booking",
   },
@@ -18,7 +20,9 @@ export const trainers = [
     title: "Emily Cardio",
     subtitle: "Cardio & Endurance Training",
     description:
-      "Emily is passionate about cardio and endurance training. With her energetic and motivating approach, she helps her clients improve their cardiovascular health and stamina.",
+      "Emily is passionate about cardio and endurance training. With her energetic and motivating approach, she helps her clients improve their cardiovascular health and stamina. Emily's training sessions incorporate high-intensity interval training (HIIT), running, cycling, and other aerobic exercises to boost your endurance and overall fitness levels.",
+    expertise: "Olympic Level Swimmer",
+    certificate: "Level 3 Diploma in Fitness Instructor ",
     image: trainerImage2,
     link: "/booking",
   },
@@ -27,7 +31,9 @@ export const trainers = [
     title: "Amanda Strength",
     subtitle: "Strength & Conditioning",
     description:
-      "Building strength is Amanda's expertise. Whether you're aiming to increase your overall body strength, tone muscles, or improve your athletic performance, Amanda will craft comprehensive strength training programs customized to your goals.",
+      "Whether you're aiming to increase your overall body strength, tone muscles, or improve your athletic performance, Amanda will craft comprehensive strength training programs customized to your goals. Her workouts include resistance training, functional movements, and core exercises designed to enhance your strength, power, and agility.",
+    expertise: "Qualified Coach for 7+ years",
+    certificate: "Cert IV in Fitness",
     image: trainerImage3,
     link: "/booking",
   },
@@ -36,7 +42,9 @@ export const trainers = [
     title: "Ben Physio",
     subtitle: "Physio & Rehabilitation",
     description:
-      "Ben is not just a personal trainer but also a certified physiotherapist. Ben specialize in rehabilitative exercises and injury prevention. If you're recovering from an injury or dealing with chronic pain, Ben will create tailored exercise plans to enhance your mobility, flexibility, and overall well-being.",
+      "Ben is a certified physiotherapist who specialize in rehabilitative exercises and injury prevention. Ben will create tailored exercise plans to enhance your mobility, flexibility, and overall well-being.His holistic approach integrates physiotherapy techniques and personalized fitness routines to support your recovery journey.",
+    expertise: "BA Exercise and Sports Science",
+    certificate: "Masters in Physiotherapy",
     image: trainerImage4,
     link: "/booking",
   },

@@ -6,6 +6,7 @@
   "dependencies": {
     "@apollo/client": "^3.8.6",
     "@apollo/server": "^4.7.1",
+    "@emailjs/browser": "^3.11.0",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
     "apollo-server-express": "^3.12.1",
