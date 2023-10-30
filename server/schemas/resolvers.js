@@ -84,16 +84,19 @@ exports.resolvers = {
       // If the user is not an admin, throw a forbidden error
       throw new ForbiddenError('You are not authorized for this action!');
     },
-    deleteAppointment: async (parent, { _id }, context) => {
+    deleteAppointment: async (parent, { selectedDate, selectedTime }, context) => {
       if (!context.user) {
         throw new AuthenticationError('You need to be logged in!');
       }
     
-      // Find the user who owns the appointment
-      const user = await User.findOne({ 'appointments._id': _id }, 'appointments.$');
+      // Find the user who owns the appointment with the provided date and time
+      const user = await User.findOne({
+        'appointments.selectedDate': selectedDate,
+        'appointments.selectedTime': selectedTime,
+      });
     
       if (!user) {
-        throw new Error('No appointment found with this id!');
+        throw new Error('No appointment found with the provided date and time!');
       }
     
       // Check if the context user is the owner of the appointment or has a higher role
@@ -104,9 +107,19 @@ exports.resolvers = {
         throw new ForbiddenError('You need to have appropriate permissions to delete an appointment!');
       }
     
-      // Pull the appointment from the user's 'appointments' array
-      const appointmentToDelete = user.appointments[0];
-      await user.updateOne({ $pull: { appointments: { _id } } });
+      // Filter the appointment to delete based on selectedDate and selectedTime
+      const appointmentToDelete = user.appointments.find(
+        (appointment) =>
+          appointment.selectedDate === selectedDate &&
+          appointment.selectedTime === selectedTime
+      );
+    
+      if (!appointmentToDelete) {
+        throw new Error('No appointment found with the provided date and time!');
+      }
+    
+      // Remove the appointment from the user's 'appointments' array
+      await user.updateOne({ $pull: { appointments: { _id: appointmentToDelete._id } }});
     
       // Return the appointment that was deleted
       return appointmentToDelete;

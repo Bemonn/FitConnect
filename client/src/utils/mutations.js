@@ -57,14 +57,15 @@ mutation UpdateUser($firstName: String, $lastName: String, $email: String) {
 }`
 
 export const DELETE_APPOINTMENT = gql`
-mutation DeleteAppointment($id: ID!) {
-  deleteAppointment(_id: $id) {
-    _id
-    selectedDate
-    selectedTime
-    selectedTrainer
+  mutation DeleteAppointment($selectedDate: String!, $selectedTime: String!) {
+    deleteAppointment(selectedDate: $selectedDate, selectedTime: $selectedTime) {
+      _id
+      selectedDate
+      selectedTime
+      selectedTrainer
+    }
   }
-}`
+`;
 
 export const DELETE_USER = gql`
 mutation DeleteUser($id: ID!) {

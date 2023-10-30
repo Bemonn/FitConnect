@@ -54,6 +54,6 @@ exports.typeDefs = gql`
 
     deleteUser(_id: ID!): User
 
-    deleteAppointment(_id: ID!): Appointment
+    deleteAppointment(selectedDate: String!, selectedTime: String!): Appointment
   }
 `;
