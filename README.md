@@ -12,25 +12,29 @@
 
 ## 📄 Description 
 
-Welcome to FitConnect, your ultimate fitness companion that brings personalized training, easy booking, and community support all in one place. Transform your fitness journey with our intuitive app designed to meet your unique needs and goals.
+Welcome to FitConnect, your ultimate fitness companion that brings personalized training, easy booking, and community support all in one place. Our mission is to provide an intuitive platform where users can effortlessly book sessions with certified trainers while being able to gain insights into the sort of trainer they need and explore testimonials to make informed decisions.
 
-Features
-* Certfied Trainers: users can choose and connect with different trainers
-* Seamless Booking: effortlessly book a session with trainer of choice, any date and time
+Main features of FitConnect:
+* User Authentication: Secure signup and login functionality ensuring data protection
+* Certfied Trainers: Explore our curated list of professional trainers, each bringing a unique skill set to the table
+* Booking System: Seamlessly book appointments with trainers of your choice.
 * 24/7: no matter what your livestyle, there is a date and time for you
 * Customized Workout: your personal trainer will tailor workouts for you based on your fitness goals
+* Contact: Reach out with your queries, suggestions, or feedback. We value our community's voice
+* Dashboard: An intuitive user dashboard to manage bookings, check session history, and interact with trainers.
 * Reminders: receive timely remimders for your appointment to keep you on track
 * Secure Online Payments: ensuring a hassle-free transaction experience
 
 ## 📋 Table of Contents
 
-- [Deployed Link](#deployed-link)
+- [Lin](#link)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [Contact Us](#contact)
 - [License](#license)
 
-## 📲 Deployed Link
+## 📲 Live Server
 
 ## 🖥️ Installation 
 
@@ -41,14 +45,33 @@ To get started with FitConnect, follow these steps:
 4. ``npm run dev``
 5. access the app in your browser at 'http://localhost:3000'
 
-## Contributing
+## 📈 Usage
+
+Using the live link or a local server users will be brought to the welcome page:
+
+From here users will have the ability to navigate the site and explore:
+
+Features like the "Dashboard" and "Book now" are locked behind signup/login:
+
+After signing up and logging in users will be able to book an appointment:
+
+And will also be free to explore their dashboard:
+
+Enjoy using our site!:
+
+## 💬 Contributing
 
 We welcome contributions from the community! If you find a bug or have a feature request, please open an issue. If you'd like to contribute code, please fork the repository and submit a pull request after making your changes.
 
-## License
+## 📚 License
 
 FitConnect is licensed under the MIT License - see the LICENSE.md file for details.
 
-## Contact Us
+## ☎️ Contact Us
 
 If you have any questions or inquiries, feel free to contact us at [tristan2107b@gmail.com], [darkages980@gmail.com], [hlruan829@gmail.com].
+
+## Credits
+Tristan https://github.com/Bemonn
+Ying https://github.com/YJPuk
+Hailin https://github.com/Hailin-Ruan 
