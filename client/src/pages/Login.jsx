@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { ADD_USER } from "../utils/mutations"
+import { ADD_USER, LOGIN_USER } from "../utils/mutations"
 import { useMutation } from "@apollo/client";
+import emailjs from '@emailjs/browser'
 
 export default function LoginSignupForm() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -14,11 +15,14 @@ export default function LoginSignupForm() {
   });
   const [activeForm, setActiveForm] = useState("login");
   const [addUser] = useMutation(ADD_USER)
+  const [loginUser] = useMutation(LOGIN_USER)
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Handle login form submission
+    const {email, password} = loginData
     console.log("Logging in with data:", loginData);
+    loginUser({variables: {email, password}})
   };
 
   const handleSignupSubmit = (e) => {
@@ -27,6 +31,23 @@ export default function LoginSignupForm() {
     const {firstName, lastName, email, password, role} = signupData
     console.log("Signing up with data:", {firstName, lastName, email, password, role});
     addUser({variables: {firstName, lastName, email, password, role}})
+    function sendWelcomeEmail() {
+      //sent to their email
+      const templateParams = {   
+        to_email: signupData.email,
+        to_name: signupData.firstName
+      };
+    
+      // Use the email service library to send the email
+      emailjs
+        .send('service_trawbdm', 'template_qp5k9ug', templateParams, 'XePbch_hrvL5A6TRM')
+        .then((result) => {
+          console.log('Welcome email sent successfully', result);
+        }, (error) => {
+          console.log('Welcome email sending failed', error)
+        });
+    }
+    sendWelcomeEmail(signupData)
   };
 
   return (
