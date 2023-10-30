@@ -1,84 +1,98 @@
-import { useState } from "react";
-import { ADD_USER, LOGIN_USER } from "../utils/mutations"
+import React, { useState } from "react";
+import AuthService from '../utils/auth';
 import { useMutation } from "@apollo/client";
-import emailjs from '@emailjs/browser'
+import emailjs from '@emailjs/browser';
+import { ADD_USER, LOGIN_USER } from "../utils/mutations";
 
-export default function LoginSignupForm() {
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+export default function Login() {
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [signupData, setSignupData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    role: "client", //default role
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    role: ''
   });
+
   const [activeForm, setActiveForm] = useState("login");
-  const [addUser] = useMutation(ADD_USER)
-  const [loginUser] = useMutation(LOGIN_USER)
+  const [loginUser] = useMutation(LOGIN_USER);
+  const [addUser] = useMutation(ADD_USER);
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    // Handle login form submission
-    const {email, password} = loginData
-    console.log("Logging in with data:", loginData);
-    loginUser({variables: {email, password}})
+  const handleInputChange = (e, setStateFunc) => {
+    const { name, value } = e.target;
+    setStateFunc(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup form submission
-    const {firstName, lastName, email, password, role} = signupData
-    console.log("Signing up with data:", {firstName, lastName, email, password, role});
-    addUser({variables: {firstName, lastName, email, password, role}})
-    function sendWelcomeEmail() {
-      //sent to their email
-      const templateParams = {   
-        to_email: signupData.email,
-        to_name: signupData.firstName
-      };
-    
-      // Use the email service library to send the email
-      emailjs
-        .send('service_trawbdm', 'template_qp5k9ug', templateParams, 'XePbch_hrvL5A6TRM')
-        .then((result) => {
-          console.log('Welcome email sent successfully', result);
-        }, (error) => {
-          console.log('Welcome email sending failed', error)
-        });
+    try {
+      const { data } = await loginUser({ variables: loginData });
+      if (data && data.login && data.login.token) {
+        AuthService.login(data.login.token);
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
     }
-    sendWelcomeEmail(signupData)
   };
 
-  return (
-    <div className="container mx-auto bg-gray-900">
-      <div className="flex justify-center items-center h-screen">
-        <div className="w-full max-w-md">
-          <div className="mb-6">
-            <button
-              className={`mr-4 p-2 ${
-                activeForm === "login" ? "bg-blue-500" : "bg-blue-300"
-              }`}
-              onClick={() => setActiveForm("login")}
-            >
-              Login
-            </button>
-            <button
-              className={`p-2 ${
-                activeForm === "signup" ? "bg-green-500" : "bg-green-300"
-              }`}
-              onClick={() => setActiveForm("signup")}
-            >
-              Sign Up
-            </button>
-          </div>
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await addUser({ variables: signupData });
+      if (data && data.addUser && data.addUser.token) {
+        AuthService.login(data.addUser.token);
+        sendWelcomeEmail(signupData.email);
+      }
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  };
 
-          {activeForm === "login" && (
-            <form
-              onSubmit={handleLoginSubmit}
-              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-            >
-              <div className="mb-4">
+  const sendWelcomeEmail = (email) => {
+    emailjs.send(
+      "service_trawbdm", 
+      "template_qp5k9ug", 
+      { email }, 
+      'XePbch_hrvL5A6TRM'
+    ).then(
+      (response) => {
+        console.log("Email sent:", response);
+      },
+      (error) => {
+        console.error("Email error:", error);
+      }
+    );
+};
+
+return (
+  <div className="container mx-auto bg-gray-900">
+    <div className="flex justify-center items-center h-screen">
+      <div className="w-full max-w-md">
+        <div className="mb-6">
+          <button
+            className={`mr-4 p-2 ${
+              activeForm === "login" ? "bg-blue-500" : "bg-blue-300"
+            }`}
+            onClick={() => setActiveForm("login")}
+          >
+            Login
+          </button>
+          <button
+            className={`p-2 ${
+              activeForm === "signup" ? "bg-green-500" : "bg-green-300"
+            }`}
+            onClick={() => setActiveForm("signup")}
+          >
+            Sign Up
+          </button>
+        </div>
+
+        {activeForm === "login" && (
+          <form
+            onSubmit={handleLoginSubmit}
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          >
+            <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="username"
@@ -122,34 +136,32 @@ export default function LoginSignupForm() {
                   Log In
                 </button>
               </div>
-            </form>
-          )}
+          </form>
+        )}
 
-          {activeForm === "signup" && (
-            <form
-              onSubmit={handleSignupSubmit}
-              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-            >
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="firstName"
-                >
-                  First Name
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="firstName"
-                  type="text"
-                  placeholder="First Name"
-                  value={signupData.firstName}
-                  onChange={(e) =>
-                    setSignupData({ ...signupData, firstName: e.target.value })
-                  }
-                />
-              </div>
+        {activeForm === "signup" && (
+          <form
+            onSubmit={handleSignupSubmit}
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          >
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="firstName"
+              >
+                First Name
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="firstName"
+                type="text"
+                placeholder="First Name"
+                value={signupData.firstName}
+                onChange={(e) => handleInputChange(e, setSignupData)}
+              />
+            </div>
 
-              <div className="mb-4">
+            <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="lastName"
@@ -256,10 +268,10 @@ export default function LoginSignupForm() {
                   Sign Up
                 </button>
               </div>
-            </form>
-          )}
-        </div>
+          </form>
+        )}
       </div>
     </div>
-  );
+  </div>
+);
 }

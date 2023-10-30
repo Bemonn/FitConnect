@@ -52,15 +52,17 @@ export const trainers = [
 
 export const testimonials = [
   {
+    id: 1,
     quote:
-      "The personalized approach is what truly sets FitConnect apart. My trainer took the time to understand my goals, my limitations, and my preferences. They crafted a workout plan that challenged me without overwhelming me. Each session felt tailored just for me, addressing my specific needs and helping me overcome my fitness hurdles.",
+      "The personalized approach is what truly sets FitConnect apart...",
     image: "https://randomuser.me/api/portraits/men/1.jpg",
     name: "Gym A. Lot",
     company: "Weightlifter",
   },
   {
+    id: 2,
     quote:
-      "I can't express enough how FitConnect has transformed my fitness journey. Before discovering this incredible personal trainer app, I was stuck in a rut, unsure of where to start and lacking the motivation to push myself. That all changed when I connected with their dedicated team of trainers.",
+      "I can't express enough how FitConnect has transformed my fitness journey...",
     image: "https://randomuser.me/api/portraits/men/94.jpg",
     name: "Joe Smith",
     company: "Beginner",
