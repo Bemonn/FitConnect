@@ -10,6 +10,11 @@ export default function Navbar() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('id_token');
+    window.location.href = "/login";
+  };
+
   return (
     <header className="bg-gray-800 md:sticky top-0 z-10">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -43,12 +48,21 @@ export default function Navbar() {
             Dashboard
           </Link>
         </nav>
-        <Link
-          to="/login"
-          className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
-        >
-          Log In / Sign Up
-        </Link>
+        {isAuthenticated ? (
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white cursor-pointer"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link
+            to="/login"
+            className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover-bg-gray-700 rounded text-base mt-4 md:mt-0"
+          >
+            Log In / Sign Up
+          </Link>
+        )}
       </div>
     </header>
   );

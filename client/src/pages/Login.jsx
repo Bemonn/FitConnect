@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AuthService from '../utils/auth';
 import { useMutation } from "@apollo/client";
 import emailjs from '@emailjs/browser';
@@ -38,31 +38,30 @@ export default function Login() {
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await addUser({ variables: signupData });
+      const { firstName, lastName, email, password, role } = signupData;
+      const { data } = await addUser({ variables: { firstName, lastName, email, password, role } });
       if (data && data.addUser && data.addUser.token) {
         AuthService.login(data.addUser.token);
-        sendWelcomeEmail(signupData.email);
+  
+        const sendWelcomeEmail = async () => {
+          const templateParams = {
+            to_email: signupData.email,
+            to_name: signupData.firstName
+          };
+          
+          try {
+            const result = await emailjs.send('service_trawbdm', 'template_qp5k9ug', templateParams, 'XePbch_hrvL5A6TRM');
+            console.log('Welcome email sent successfully', result);
+          } catch (error) {
+            console.log('Welcome email sending failed', error);
+          }
+        }
+        await sendWelcomeEmail();
       }
     } catch (error) {
       console.error("Error signing up:", error);
     }
   };
-
-  const sendWelcomeEmail = (email) => {
-    emailjs.send(
-      "service_trawbdm", 
-      "template_qp5k9ug", 
-      { email }, 
-      'XePbch_hrvL5A6TRM'
-    ).then(
-      (response) => {
-        console.log("Email sent:", response);
-      },
-      (error) => {
-        console.error("Email error:", error);
-      }
-    );
-};
 
 return (
   <div className="container mx-auto bg-gray-900">
