@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,7 +19,14 @@ const BookingPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
 
-  const [addAppointment] = useMutation(ADD_APPOINTMENT)
+  const [addAppointment] = useMutation(ADD_APPOINTMENT);
+
+  useEffect(() => {
+    const isAuthenticated = !!localStorage.getItem('id_token');
+    if (!isAuthenticated) {
+      window.location.href = "/login";
+    }
+  }, []);
 
   return (
     <div className="container mx-auto bg-gray-900 text-white p-8">
