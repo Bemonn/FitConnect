@@ -18,6 +18,9 @@ export default function Login() {
   const [loginUser] = useMutation(LOGIN_USER);
   const [addUser] = useMutation(ADD_USER);
 
+  // Add signup success state
+  const [signupSuccess, setSignupSuccess] = useState(false);
+
   const handleInputChange = (e, setStateFunc) => {
     const { name, value } = e.target;
     setStateFunc(prev => ({ ...prev, [name]: value }));
@@ -60,49 +63,50 @@ export default function Login() {
           console.log('Welcome email sending failed', error)
         });
     }
-    sendWelcomeEmail(signupData)
+    sendWelcomeEmail(signupData);
     try { 
       const { data } = await addUser({ variables: { firstName, lastName, email, password, role } });
       if (data && data.addUser && data.addUser.token) {
         AuthService.login(data.addUser.token);
+        setSignupSuccess(true); // Set signup success state to true
       }
     } catch (error) {
       console.error("Error signing up:", error);
     }
   };
 
-return (
-  <div className="container mx-auto bg-gray-900">
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-full max-w-md">
-        <div className="mb-6">
-          <button
-            className={`mr-4 p-2 ${
-              activeForm === "login" ? "bg-blue-500" : "bg-blue-300"
-            }`}
-            onClick={() => setActiveForm("login")}
-          >
-            Login
-          </button>
-          <button
-            className={`p-2 ${
-              activeForm === "signup" ? "bg-green-500" : "bg-green-300"
-            }`}
-            onClick={() => setActiveForm("signup")}
-          >
-            Sign Up
-          </button>
-        </div>
+  return (
+    <div className="container mx-auto bg-gray-900">
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-full max-w-md">
+          <div className="mb-6">
+            <button
+              className={`mr-4 p-2 ${
+                activeForm === "login" ? "bg-blue-500" : "bg-blue-300"
+              }`}
+              onClick={() => setActiveForm("login")}
+            >
+              Login
+            </button>
+            <button
+              className={`p-2 ${
+                activeForm === "signup" ? "bg-green-500" : "bg-green-300"
+              }`}
+              onClick={() => setActiveForm("signup")}
+            >
+              Sign Up
+            </button>
+          </div>
 
-        {activeForm === "login" && (
-          <form
-            onSubmit={handleLoginSubmit}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          >
-            <div className="mb-4">
+          {activeForm === "login" && (
+            <form
+              onSubmit={handleLoginSubmit}
+              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            >
+              <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="username"
+                  htmlFor="email"
                 >
                   Email
                 </label>
@@ -144,34 +148,34 @@ return (
                   Log In
                 </button>
               </div>
-          </form>
-        )}
+            </form>
+          )}
 
-        {activeForm === "signup" && (
-          <form
-            onSubmit={handleSignupSubmit}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          >
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="firstName"
-              >
-                First Name
-              </label>
-              <input
-                name="firstName"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="firstName"
-                type="text"
-                placeholder="First Name"
-                required
-                value={signupData.firstName}
-                onChange={(e) => handleInputChange(e, setSignupData)}
-              />
-            </div>
+          {activeForm === "signup" && (
+            <form
+              onSubmit={handleSignupSubmit}
+              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            >
+              <div className="mb-4">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="firstName"
+                >
+                  First Name
+                </label>
+                <input
+                  name="firstName"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  required
+                  value={signupData.firstName}
+                  onChange={(e) => handleInputChange(e, setSignupData)}
+                />
+              </div>
 
-            <div className="mb-4">
+              <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="lastName"
@@ -195,7 +199,7 @@ return (
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="username"
+                  htmlFor="email"
                 >
                   Email
                 </label>
@@ -281,10 +285,15 @@ return (
                   Sign Up
                 </button>
               </div>
-          </form>
-        )}
+
+              {/* Display signup success message */}
+              {signupSuccess && (
+                <div className="text-green-500 mt-4">Sign up successful</div>
+              )}
+            </form>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
