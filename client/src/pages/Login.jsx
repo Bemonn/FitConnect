@@ -37,6 +37,12 @@ export default function Login() {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if passwords match
+    if (signupData.password !== signupData.confirmPassword) {
+      console.error("Passwords do not match!");
+      return;
+    }
     const { firstName, lastName, email, password, role } = signupData;
     function sendWelcomeEmail() {
       //sent to their email
@@ -105,6 +111,7 @@ return (
                   id="email"
                   type="text"
                   placeholder="Email"
+                  required
                   value={loginData.email}
                   onChange={(e) =>
                     setLoginData({ ...loginData, email: e.target.value })
@@ -158,6 +165,7 @@ return (
                 id="firstName"
                 type="text"
                 placeholder="First Name"
+                required
                 value={signupData.firstName}
                 onChange={(e) => handleInputChange(e, setSignupData)}
               />
@@ -176,6 +184,7 @@ return (
                   id="lastName"
                   type="text"
                   placeholder="Last Name"
+                  required
                   value={signupData.lastName}
                   onChange={(e) =>
                     setSignupData({ ...signupData, lastName: e.target.value })
@@ -192,10 +201,13 @@ return (
                 </label>
                 <input
                   name="email"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="..."
                   id="email"
-                  type="text"
+                  type="email"
                   placeholder="Email"
+                  required
+                  pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}"
+                  title="Please enter a valid email address"
                   value={signupData.email}
                   onChange={(e) =>
                     setSignupData({ ...signupData, email: e.target.value })
