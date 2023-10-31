@@ -4,7 +4,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-calendar/dist/Calendar.css";
 import { ADD_APPOINTMENT } from "../utils/mutations"
-import { useMutation } from "@apollo/client";
+import { QUERY_ME } from '../utils/queries';
+import { useMutation, useQuery } from "@apollo/client";
 import emailjs from '@emailjs/browser'
 
 const trainers = [
@@ -15,6 +16,8 @@ const trainers = [
 ];
 
 const BookingPage = () => {
+  const { data, loading, error } = useQuery(QUERY_ME);
+  
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
@@ -27,6 +30,11 @@ const BookingPage = () => {
       window.location.href = "/login";
     }
   }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const { firstName, email } = data.me;
 
   return (
     <div className="container mx-auto bg-gray-900 text-white p-8">
@@ -101,6 +109,30 @@ const BookingPage = () => {
               },
             })
             .then((response) => {
+              const trainerMapping = {
+                1: "John Lifter",
+                2: "Emily Cardio",
+                3: "Amanda Strength",
+                4: "Ben Physio",
+              };
+              const selectedTrainerName = trainerMapping[selectedTrainer]
+              const templateParams = {
+                booking_date: formattedDate,
+                booking_time: formattedTime,
+                booking_trainer: selectedTrainerName,
+                to_email: email,
+                to_name: firstName,
+              };
+              function sendBookingemail() { 
+                emailjs
+                  .send('service_trawbdm', 'template_qxcle4o', templateParams, 'XePbch_hrvL5A6TRM')
+                  .then((result) => {
+                    console.log('Booking email sent successfully', result);
+                  }, (error) => {
+                    console.log('Booking email sending failed', error)
+                  });
+              }
+              sendBookingemail(templateParams)
               console.log("Booking confirmed:", response.data.addAppointment);
             })
             .catch((error) => {
@@ -109,22 +141,6 @@ const BookingPage = () => {
           } else {
             console.error("Please select trainer, date, and time.");
           }
-          
-          const sendWelcomeEmail = (email) => {
-            emailjs.send(
-              "service_trawbdm", 
-              "template_qp5k9ug", 
-              { email }, 
-              'XePbch_hrvL5A6TRM'
-            ).then(
-              (response) => {
-                console.log("Email sent:", response);
-              },
-              (error) => {
-                console.error("Email error:", error);
-              }
-            );
-        };
         }}
       >
         Confirm Booking
