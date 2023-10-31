@@ -11,7 +11,7 @@ export default function Login() {
     lastName: '',
     email: '',
     password: '',
-    role: ''
+    role: 'client'
   });
 
   const [activeForm, setActiveForm] = useState("login");
@@ -152,6 +152,7 @@ return (
                 First Name
               </label>
               <input
+                name="firstName"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="firstName"
                 type="text"
@@ -169,6 +170,7 @@ return (
                   Last Name
                 </label>
                 <input
+                  name="lastName"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="lastName"
                   type="text"
@@ -188,6 +190,7 @@ return (
                   Email
                 </label>
                 <input
+                  name="email"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="text"
@@ -207,6 +210,7 @@ return (
                   Role
                 </label>
                 <select
+                  name="role"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="role"
                   value={signupData.role}
@@ -227,6 +231,7 @@ return (
                   Password
                 </label>
                 <input
+                  name="password"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   id="password"
                   type="password"
@@ -246,17 +251,12 @@ return (
                   Confirm Password
                 </label>
                 <input
+                  name="confirmPassword"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   id="confirmPassword"
                   type="password"
                   placeholder="*********"
-                  value={signupData.confirmPassword}
-                  onChange={(e) =>
-                    setSignupData({
-                      ...signupData,
-                      confirmPassword: e.target.value,
-                    })
-                  }
+                  onChange={(e) => handleInputChange(e, setSignupData)}
                 />
               </div>
 
