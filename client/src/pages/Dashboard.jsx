@@ -36,30 +36,30 @@ const Dashboard = () => {
   const { firstName, appointments } = data.me;
 
   return (
-    <div>
-      <h1>Welcome, {firstName}!</h1>
-      <p>This is your dashboard where you can see and manage your appointments.</p>
+    <div className="container mx-auto p-8 bg-gray-900 text-white rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold mb-4">Welcome, {firstName}!</h1>
+      <p className="text-gray-400 mb-8">This is your dashboard where you can see and manage your appointments.</p>
 
-      <div>
-        <h2>Your Appointments</h2>
-        <table>
-          <thead>
+      <div className="overflow-x-auto">
+        <h2 className="text-3xl font-bold mb-4">Your Appointments</h2>
+        <table className="min-w-full border rounded-lg overflow-hidden">
+          <thead className="bg-gray-800 text-white">
             <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Trainer</th>
-              <th>Action</th>
+              <th className="py-2 px-4 text-left">Date</th>
+              <th className="py-2 px-4 text-left">Time</th>
+              <th className="py-2 px-4 text-left">Trainer</th>
+              <th className="py-2 px-4 text-left">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-gray-700">
             {appointments.map((appointment) => (
-              <tr key={appointment._id}>
-                <td>{appointment.selectedDate}</td>
-                <td>{appointment.selectedTime}</td>
-                <td>{trainerMapping[appointment.selectedTrainer]}</td>
-                <td>
+              <tr key={appointment._id} className="border-b border-gray-600">
+                <td className="py-2 px-4 text-left">{appointment.selectedDate}</td>
+                <td className="py-2 px-4 text-left">{appointment.selectedTime}</td>
+                <td className="py-2 px-4 text-left">{trainerMapping[appointment.selectedTrainer]}</td>
+                <td className="py-2 px-4 text-left">
                   <button
-                    style={{ color: 'red' }}
+                    className="text-red-500 hover:text-red-700 focus:outline-none"
                     onClick={() => handleAppointmentDeletion(appointment)}
                   >
                     Cancel Appointment
