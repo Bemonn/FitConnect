@@ -36,6 +36,8 @@ Main features of FitConnect:
 
 ## 📲 Live Server
 
+https://fit-connect-37898a012750.herokuapp.com/ 
+
 ## 🖥️ Installation 
 
 To get started with FitConnect, follow these steps:
