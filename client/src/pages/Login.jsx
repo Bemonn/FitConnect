@@ -37,26 +37,28 @@ export default function Login() {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { firstName, lastName, email, password, role } = signupData;
+    const { firstName, lastName, email, password, role } = signupData;
+    function sendWelcomeEmail() {
+      //sent to their email
+      const templateParams = {   
+        to_email: signupData.email,
+        to_name: signupData.firstName
+      };
+
+      // Use the email service library to send the email
+      emailjs
+        .send('service_trawbdm', 'template_qp5k9ug', templateParams, 'XePbch_hrvL5A6TRM')
+        .then((result) => {
+          console.log('Welcome email sent successfully', result);
+        }, (error) => {
+          console.log('Welcome email sending failed', error)
+        });
+    }
+    sendWelcomeEmail(signupData)
+    try { 
       const { data } = await addUser({ variables: { firstName, lastName, email, password, role } });
       if (data && data.addUser && data.addUser.token) {
         AuthService.login(data.addUser.token);
-  
-        const sendWelcomeEmail = async () => {
-          const templateParams = {
-            to_email: signupData.email,
-            to_name: signupData.firstName
-          };
-          
-          try {
-            const result = await emailjs.send('service_trawbdm', 'template_qp5k9ug', templateParams, 'XePbch_hrvL5A6TRM');
-            console.log('Welcome email sent successfully', result);
-          } catch (error) {
-            console.log('Welcome email sending failed', error);
-          }
-        }
-        await sendWelcomeEmail();
       }
     } catch (error) {
       console.error("Error signing up:", error);
