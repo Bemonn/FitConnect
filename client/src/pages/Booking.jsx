@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,6 +21,7 @@ const BookingPage = () => {
   const [selectedTrainer, setSelectedTrainer] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
+  const [bookingConfirmed, setBookingConfirmed] = useState(false); // State to track booking confirmation
 
   const [addAppointment] = useMutation(ADD_APPOINTMENT);
 
@@ -76,7 +77,7 @@ const BookingPage = () => {
             onChange={setSelectedTime}
             showTimeSelect
             showTimeSelectOnly
-            timeIntervals={30}
+            timeIntervals={60}
             dateFormat="h:mm aa"
             timeCaption="Time"
             className="border border-gray-300 rounded px-4 py-2 w-64 text-gray-900"
@@ -85,7 +86,9 @@ const BookingPage = () => {
       </div>
 
       <button
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ${
+          bookingConfirmed ? 'bg-green-700' : ''
+        }`}
         onClick={() => {
           if (selectedTrainer && selectedDate && selectedTime) {
             const formattedDate = selectedDate.toLocaleDateString(undefined, {
@@ -134,6 +137,7 @@ const BookingPage = () => {
               }
               sendBookingemail(templateParams)
               console.log("Booking confirmed:", response.data.addAppointment);
+              setBookingConfirmed(true); // Set booking confirmation state to true
             })
             .catch((error) => {
               console.error("Error confirming booking:", error);
@@ -143,7 +147,7 @@ const BookingPage = () => {
           }
         }}
       >
-        Confirm Booking
+        {bookingConfirmed ? 'Booking Confirmed!' : 'Confirm Booking'}
       </button>
     </div>
   );
