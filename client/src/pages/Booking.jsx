@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-calendar/dist/Calendar.css";
 import { ADD_APPOINTMENT } from "../utils/mutations"
 import { useMutation } from "@apollo/client";
+import emailjs from '@emailjs/browser'
 
 const trainers = [
   { id: 1, name: "John Lifter" },
@@ -101,6 +102,22 @@ const BookingPage = () => {
           } else {
             console.error("Please select trainer, date, and time.");
           }
+          
+          const sendWelcomeEmail = (email) => {
+            emailjs.send(
+              "service_trawbdm", 
+              "template_qp5k9ug", 
+              { email }, 
+              'XePbch_hrvL5A6TRM'
+            ).then(
+              (response) => {
+                console.log("Email sent:", response);
+              },
+              (error) => {
+                console.error("Email error:", error);
+              }
+            );
+        };
         }}
       >
         Confirm Booking

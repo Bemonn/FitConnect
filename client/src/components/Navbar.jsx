@@ -20,16 +20,16 @@ export default function Navbar() {
           FitConnect
         </Link>
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center">
-          <a href="#trainers" className="mr-5 hover:text-white">
+          <a href="/#trainers" className="mr-5 hover:text-white">
             Trainers
           </a>
-          <a href="#skills" className="mr-5 hover:text-white">
+          <a href="/#skills" className="mr-5 hover:text-white">
             Skills
           </a>
-          <a href="#testimonials" className="mr-5 hover:text-white">
+          <a href="/#testimonials" className="mr-5 hover:text-white">
             Testimonials
           </a>
-          <a href="#contact" className="mr-5 hover:text-white">
+          <a href="/#contact" className="mr-5 hover:text-white">
             Contact Us
           </a>
           <a href="/booking" className="mr-5 hover:text-white">
