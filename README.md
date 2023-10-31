@@ -51,15 +51,27 @@ To get started with FitConnect, follow these steps:
 
 Using the live link or a local server users will be brought to the welcome page:
 
+![image](https://github.com/Bemonn/FitConnect/assets/132788160/46d31606-a1d6-4ac3-9c22-691a548fd8ba)
+
 From here users will have the ability to navigate the site and explore:
+
+![image](https://github.com/Bemonn/FitConnect/assets/132788160/d16688ab-40f4-4118-958b-08264e412576)
 
 Features like the "Dashboard" and "Book now" are locked behind signup/login:
 
+![image](https://github.com/Bemonn/FitConnect/assets/132788160/a919355b-23a3-4a8e-9ae8-c81dccec31ee)
+
 After signing up and logging in users will be able to book an appointment:
+
+![image](https://github.com/Bemonn/FitConnect/assets/132788160/c27ce0ed-d78a-4e6e-b99a-1a203aa54a08)
 
 And will also be free to explore their dashboard:
 
+![image](https://github.com/Bemonn/FitConnect/assets/132788160/525a7b63-0af8-409d-99c7-70a1861195ee)
+
 Enjoy using our site!:
+
+![image](https://github.com/Bemonn/FitConnect/assets/132788160/3caa4354-9fb1-4fd8-aa35-4842d3bb9c39)
 
 ## 💬 Contributing
 
