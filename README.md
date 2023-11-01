@@ -27,7 +27,7 @@ Main features of FitConnect:
 
 ## 📋 Table of Contents
 
-- [Lin](#link)
+- [LinK](#link)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -83,7 +83,7 @@ FitConnect is licensed under the MIT License - see the LICENSE.md file for detai
 
 ## ☎️ Contact Us
 
-If you have any questions or inquiries, feel free to contact us at [tristan2107b@gmail.com], [darkages980@gmail.com], [hlruan829@gmail.com].
+If you have any questions or inquiries, feel free to contact us through github our repositories are listed below.
 
 ## Credits
 Tristan https://github.com/Bemonn
